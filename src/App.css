@@ -98,3 +98,13 @@
   image-rendering: pixelated;
   z-index: 2;
 }
+
+.character-label {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: -10px;
+  z-index: 6;
+}
