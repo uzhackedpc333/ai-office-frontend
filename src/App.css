@@ -1,110 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  background-color: #0f172a;
+}
+
 .office-container {
   display: flex;
   height: 100vh;
   width: 100vw;
 }
 
+/* 🏢 Map Area - Futuristic Dark Grid */
 .map-area {
   position: relative;
   width: 70%;
-  background-color: #81ecec; /* Ofis poli rangi */
+  background-color: #0b1120;
   background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px; /* Kafel dizayni */
+    linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
   overflow: hidden;
-  border-right: 4px solid #2d3436;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset -10px 0 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Glassmorphism Map Title */
 .map-title {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 1.2rem;
+  top: 30px;
+  left: 30px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* 💻 Terminal Area */
 .chat-panel {
   width: 30%;
-  background-color: #1e272e;
+  background-color: #0f172a;
   padding: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.code-display {
-  flex: 1;
-  background-color: #000;
-  color: #00ff00;
-  padding: 15px;
-  border-radius: 8px;
-  overflow-y: auto;
-  margin-top: 15px;
-  font-size: 0.9rem;
-  white-space: pre-wrap;
+.terminal-header {
+  display: flex;
+  align-items: center;
+  background-color: #1e293b;
+  padding: 10px 15px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: none;
 }
 
+.mac-buttons {
+  display: flex;
+  gap: 6px;
+  margin-right: 15px;
+}
+
+.mac-buttons span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.mac-buttons span:nth-child(1) { background-color: #ff5f56; }
+.mac-buttons span:nth-child(2) { background-color: #ffbd2e; }
+.mac-buttons span:nth-child(3) { background-color: #27c93f; }
+
+.terminal-title {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.terminal-subtitle {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.code-display {
+  flex: 1;
+  background-color: #020617;
+  color: #34d399;
+  font-family: 'Fira Code', monospace;
+  padding: 20px;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-y: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* 🧍‍♂️ Characters & Sprites */
 .character {
   position: absolute;
-  transition: all 2s linear; /* Yurish tezligi */
+  transition: all 2s ease-in-out; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   z-index: 5;
+  height: 100px;
 }
 
 .character img {
-  width: 64px;
+  width: 60px;
   height: auto;
   image-rendering: pixelated;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
 }
 
-.speech-bubble {
-  position: absolute;
-  bottom: 70px;
-  background-color: white;
-  color: black;
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  white-space: nowrap;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  z-index: 10;
-  animation: popIn 0.3s ease-out forwards;
-}
-
-.speech-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 8px 8px 0;
-  border-style: solid;
-  border-color: white transparent transparent transparent;
-}
-
-@keyframes popIn {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+.boss-char {
+  z-index: 6;
 }
 
 .decoration {
   position: absolute;
   image-rendering: pixelated;
   z-index: 2;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.4));
 }
 
+/* Labels */
 .character-label {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-bottom: -10px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-bottom: 5px;
   z-index: 6;
+  backdrop-filter: blur(4px);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.neon-text {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* Speech Bubbles */
+.speech-bubble {
+  position: absolute;
+  bottom: 100px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #f8fafc;
+  padding: 10px 15px;
+  border-radius: 12px 12px 12px 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  border-width: 8px 8px 0;
+  border-style: solid;
+  border-color: #0f172a transparent transparent transparent;
+}
+
+@keyframes popIn {
+  0% { transform: translateY(10px) scale(0.8); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
